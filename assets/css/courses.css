@@ -1,0 +1,83 @@
+body {
+	font-family: "Inter", sans-serif;
+	background: rgb(89, 108, 158);
+	background: radial-gradient(
+		circle,
+		rgba(89, 108, 158, 1) 50%,
+		rgba(30, 42, 94, 1) 97%
+	);
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+	margin: 0;
+}
+
+.title-container {
+	max-width: 70vw;
+	text-align: left;
+	margin: 10vh auto 0 auto;
+}
+
+.title {
+	font-size: 3.5rem;
+	color: #fdfdfd;
+	margin: 0;
+}
+
+.grid-container {
+	margin: auto;
+	max-width: 80vw;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	padding: 20px;
+}
+
+.card {
+	margin: auto;
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 12px;
+	width: 80%;
+	min-height: 150px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transition: transform 0.3s, box-shadow 0.3s;
+	text-decoration: none;
+}
+
+.card a{
+	text-decoration: none;
+	color: inherit;
+}
+
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+	font-size: 3rem;
+	color: #5b5b5b;
+	margin-bottom: 10px;
+}
+
+.card-text {
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+@media (max-width: 600px) {
+	.grid-container {
+		grid-template-columns: 1fr;
+	}
+
+	.title {
+		font-size: 2.5rem;
+	}
+}
