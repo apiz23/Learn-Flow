@@ -4,19 +4,6 @@ LearnFlow is a Next-Gen Learning Platform built for the **Krenovator & Syntech O
 
 ---
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Goal of Project Competition](#goal-of-project-competition)
-- [Project Functionality](#project-functionality)
-- [Challenges Faced](#challenges-faced)
-- [References](#references)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-
----
-
 ## Introduction
 
 LearnFlow is a learning platform that incorporates modern techniques to enhance the user experience. The website allows users to take quizzes, view flashcards, and access educational content to test their knowledge on various subjects and topics. The platform dynamically fetches data using APIs and stores relevant data in the browser's local storage for later use.
