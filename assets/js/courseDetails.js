@@ -24,43 +24,65 @@ document.addEventListener("DOMContentLoaded", function () {
 					).toFixed(2);
 
 					courseContainer.innerHTML = `
-						<h1>${course.title}</h1>
-						<p>${course.description}</p>
-						<div class="progress-bar-container">
-							<div class="progress-bar" style="width: ${progressPercentage}%;"></div>
+						<div class="search-container">
+							<input type="text" id="topic-search" placeholder="Search Topics..." />
 						</div>
-						<p>Progress: ${completedTopics} / ${totalTopics} (${progressPercentage}%)</p>
-						${course.topics
+                        <h1>${course.title}</h1>
+                        <p>${course.description}</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: ${progressPercentage}%;"></div>
+                        </div>
+                        <p>Progress: ${completedTopics} / ${totalTopics} (${progressPercentage}%)</p>
+                        ${course.topics
 							.map((topic) => {
 								const completedTopics =
-									JSON.parse(localStorage.getItem(`${subject}-progress-topics`)) || [];
+									JSON.parse(
+										localStorage.getItem(`${subject}-progress-topics`)
+									) || [];
 
 								const isCompleted = completedTopics.includes(
 									topic.name.trim().toLowerCase()
 								);
 
 								return `
-								<div class="accordion-container">
-								  <details class="accordion">
-									<summary class="accordion-header">
-									  ${topic.name}
-									</summary>
-									<div class="accordion-body">
-									  <p>${topic.description}</p>
-									  <button class="start-quiz-btn button-55" data-topic="${topic.name}" ${
-									isCompleted ? "disabled" : ""
-								}>
-										Start Quiz
-									  </button>
-									</div>
-								  </details>
-								</div>
-							  `;
-							})
-							.join("")}
-						  <p>${course.additionalDescription || ""}</p>
-						  
-					`;
+                                    <div class="accordion-container">
+                                      <details class="accordion">
+                                        <summary class="accordion-header">
+                                          ${topic.name}
+                                        </summary>
+                                        <div class="accordion-body">
+                                          <p>${topic.description}</p>
+                                          <button class="start-quiz-btn button-55" data-topic="${
+																																											topic.name
+																																										}" ${isCompleted ? "disabled" : ""}>
+                                            Start Quiz
+                                          </button>
+                                        </div>
+                                      </details>
+                                    </div>
+                                  `;
+																									})
+																									.join("")}
+                          <p>${course.additionalDescription || ""}</p>
+                    `;
+
+					const searchInput = document.getElementById("topic-search");
+					searchInput.addEventListener("input", function () {
+						const query = this.value.toLowerCase();
+						const topicContainers = document.querySelectorAll(".accordion-container");
+
+						topicContainers.forEach((container) => {
+							const topicName = container
+								.querySelector(".accordion-header")
+								.textContent.toLowerCase();
+							if (topicName.includes(query)) {
+								container.style.display = "block";
+							} else {
+								container.style.display = "none";
+							}
+						});
+					});
+
 					const headers = document.querySelectorAll(".accordion-header");
 					headers.forEach((header) => {
 						header.addEventListener("click", function () {
